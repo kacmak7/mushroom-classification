@@ -31,20 +31,25 @@ def delete_missing_values():
     
     with open(data_path, 'w') as file:
         i = 0
+        deleted = 0
         for line in lines:
             i += 1
-            print('YOOOO')
             if (regex.search(line) is None):
                 file.write(line)
             else: 
                 print(i, 'record deleted')
+                deleted += 1
+        print()
+        print(deleted, 'records has been deleted')
 
 
 def prepare_data_set():
     copy_original_data_set(data_path)
-    print('data set at:', data_path)
+    #print('data set at:', data_path)
     delete_missing_values()
+    print('\nData set prepared at:', data_path)
 
 
 if __name__ == '__main__':
     check_missing_values()
+    prepare_data_set()
