@@ -2,8 +2,7 @@ import tensorflow as tf
 import numpy as np
 import pandas as pd
 
-
-data = np.genfromtxt('data.csv',dtype='bool',delimiter=',')
+data = np.genfromtxt('data_bool.csv',dtype='bool',delimiter=',')
 print('data\n',data)
 
 X_train = data[:4,1:]
