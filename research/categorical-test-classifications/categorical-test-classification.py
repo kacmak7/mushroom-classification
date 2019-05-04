@@ -2,7 +2,13 @@ import tensorflow as tf
 import numpy as np
 import pandas as pd
 
-data = np.genfromtxt('data_np.csv',dtype='bool',delimiter=',')
+data = np.array([[[1,0,0],[0,1,0],[1,0,0],[0,1,0]],
+                 [[1,0,0],[1,0,0],[0,1,0],[0,0,1]],
+                 [[1,0,0],[1,0,0],[0,1,0],[0,0,1]],
+                 [[0,1,0],[0,0,1],[1,0,0],[1,0,0]],
+                 [[0,1,0],[0,0,1],[1,0,0],[1,0,0]],
+                 [[1,0,0],[0,0,1],[1,0,0],[0,0,1]],
+                 [[1,0,0],[0,0,1],[1,0,0],[0,0,1]]])
 print('data\n',data)
 
 X_train = data[:4,1:]
