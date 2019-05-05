@@ -65,10 +65,12 @@ if (__name__ == '__main__'):
     print('y_test\n',y_test)
 
     model = tf.keras.models.Sequential()
-    model.add(tf.keras.layers.Flatten())
+    model.add(tf.keras.layers.Dense(11,input_shape=(99,),activation=tf.nn.relu))
+    model.add(tf.keras.layers.Dense(5,activation=tf.nn.relu))
     model.add(tf.keras.layers.Dense(2,activation=tf.nn.softmax))
-    model.compile(optimizer='adam',loss='mean_squared_error',metrics=['accuracy'])
-    model.fit(X_train, y_train, epochs=10)
+
+    model.compile(optimizer='adam',loss='categorical_crossentropy',metrics=['accuracy'])
+    model.fit(X_train,y_train,epochs=70,shuffle=True)
 
     predictions = model.predict(X_test)
 
