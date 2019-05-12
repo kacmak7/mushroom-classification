@@ -2,14 +2,20 @@ import numpy as np
 import pandas as pd
 import configparser
 
-data = pd.read_csv('data.csv').to_numpy()
+data = pd.read_csv('data.csv',header=None).to_numpy()
 # X = (hours sleeping, hours studying), y = score on test
 X = data[:,:2]
 y = data[:,2:]
 
+#print('X',X)
+#print('y',y)
+
 # normalize data
 X = X/np.amax(X, axis=0) # maximum of X array
 y = y/100 # max test score is 100
+
+#print('X',X)
+#print('y',y)
 
 class Neural_Network(object):
     def __init__(self):
@@ -27,9 +33,9 @@ class Neural_Network(object):
     def forward(self, X):
         self.hidden = np.dot(X,self.weights1)
         self.activated_hidden = self.sigmoid(self.hidden)
-        print(self.activated_hidden)
         self.output = np.dot(self.activated_hidden,self.weights2)
         self.activated_output = self.sigmoid(self.output)
+        print(self.activated_hidden)
         print(self.activated_output)
         return self.activated_output
 
