@@ -17,7 +17,7 @@ y = y/100 # max test score is 100
 #print('X',X)
 #print('y',y)
 
-class Neural_Network(object):
+class Neural_Network:
     def __init__(self):
         config = configparser.ConfigParser()
         config.read('config.ini')
@@ -39,8 +39,21 @@ class Neural_Network(object):
         print(self.activated_output)
         return self.activated_output
 
-    def sigmoid(self, s):
+    def backward(self,X,y,o):
+        self.output_error = y - o
+        self.output_delta = self.output_error*self.sigmoidPrime(o)
+
+        #self.hidden_error = self
+        #self.hidden_delta = self.hidden_error*self.sigmoidPrime(self.hu)
+
+        #self.weights1 += 
+        #self.weights2 += 
+
+    def sigmoid(self,s):
         return 1/(1+np.exp(-s))
+
+    def sigmoidPrime(self,s):
+        return s*(1-s)
 
 if __name__ == '__main__':
     nn = Neural_Network()
