@@ -22,7 +22,7 @@ class Neural_Network:
         config = configparser.ConfigParser()
         config.read('config.ini')
         layers = config['layers']
-        # layers
+        # 3 layers
         self.inputSize = int(layers.get('inputSize'))
         self.hiddenSize = int(layers.get('hiddenSize'))
         self.outputSize = int(layers.get('outputSize'))
@@ -39,23 +39,23 @@ class Neural_Network:
         print(self.activated_output)
         return self.activated_output
 
-    def backward(self,X,y,o):
-        self.output_error = y - o
+    def backward(self,X,y,output):
+        self.output_error = y - output
         self.output_delta = self.output_error*self.sigmoidPrime(o)
 
-        #self.hidden_error = self
-        #self.hidden_delta = self.hidden_error*self.sigmoidPrime(self.hu)
+        self.hidden_error = self.o_delta.dor(self.weights2.T)
+        self.hidden_delta = self.hidden_error*self.sigmoidPrime(self.hidden)
 
-        #self.weights1 += 
-        #self.weights2 += 
+        self.weights1 += X.T.dot(self.hidden_delta)
+        self.weights2 += self.hidden.T.dot(self.output_delta)
+    
+    def train(self, X, y, epochs = 100):
+        for i in range(100):
+            output = self.forward(X)
+            self.backward(X, y, output)
 
     def sigmoid(self,s):
         return 1/(1+np.exp(-s))
 
     def sigmoidPrime(self,s):
         return s*(1-s)
-
-if __name__ == '__main__':
-    nn = Neural_Network()
-    nn.forward(X)
-
