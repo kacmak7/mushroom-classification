@@ -7,15 +7,9 @@ data = pd.read_csv('data.csv',header=None).to_numpy()
 X = data[:,:2]
 y = data[:,2:]
 
-#print('X',X)
-#print('y',y)
-
 # normalize data
 X = X/np.amax(X, axis=0) # maximum of X array
 y = y/100 # max test score is 100
-
-#print('X',X)
-#print('y',y)
 
 class Neural_Network:
     def __init__(self):
