@@ -46,7 +46,7 @@ class Neural_Network:
         self.weights2 += self.hidden.T.dot(self.output_delta)
     
     def train(self, X, y, epochs = 100):
-        for i in range(epochs):
+        for i in range(epochs): 
             output = self.forward(X)
             self.backward(X, y, output)
 
